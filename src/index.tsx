@@ -14,7 +14,10 @@ export function createActionSheetOptions<
   buttons: Buttons;
   destructiveButtonLabel?: keyof Buttons;
   cancelButton: boolean | string | { text: string; callback: () => void };
-}): [ActionSheetIOSOptions, (buttonIndex: number) => void] {
+}): [
+  Omit<ActionSheetIOSOptions, 'tintColor' | 'userInterfaceStyle'>,
+  (buttonIndex: number) => void
+] {
   let options = [];
   let buttonCallbackMappingToIndex: Array<() => void> = [];
 
